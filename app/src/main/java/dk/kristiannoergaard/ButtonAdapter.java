@@ -52,7 +52,9 @@ public class ButtonAdapter extends BaseAdapter {
     	String s = mOptions[position];
         if (convertView == null) {  // if it's not recycled, initialize some attributes
             button = new Button(mAbcSjovActivity);
-            button.setLayoutParams(new GridView.LayoutParams(85, 85));
+            int density = mAbcSjovActivity.getResources().getDisplayMetrics().densityDpi;
+            int sz = (int)(density/2.6);
+            button.setLayoutParams(new GridView.LayoutParams(sz, sz));
             button.setText(s);
             button.setTextColor(Color.rgb(14, 35, 8));
             if ( s.length() == 1)
