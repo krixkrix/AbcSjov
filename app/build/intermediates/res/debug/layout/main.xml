@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+    <TextView
+        android:id="@+id/scorelabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:padding="5dp"
+        android:text="@string/scorelabel"/>
+        
+    <RatingBar android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/scorelabel"
+        android:numStars="10"
+        android:stepSize="1.0"
+        style="?android:attr/ratingBarStyleSmall"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        />
+    
+    <TextView
+        android:id="@+id/level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:padding="5dp"
+        android:paddingLeft="20dp"
+        android:text="@string/level"/>
+    
+    <TextView
+        android:id="@+id/levellabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:padding="5dp"
+        android:paddingLeft="20dp"
+        android:layout_toLeftOf="@id/level"
+        android:text="@string/levellabel"/>
+    
+    <ImageView
+      android:id="@+id/testimage"
+      android:contentDescription="@string/imagefortest"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/scorelabel"
+      android:padding="10dp"
+      android:layout_gravity="top|center_horizontal"
+      android:gravity="top"
+      android:scaleType="centerInside"
+      android:src="@drawable/mus"/>
+        
+    <RelativeLayout 
+        android:id="@+id/InnerRelativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+        
+    	<GridView 
+ 			android:id="@+id/gridview"
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:columnWidth="90dp"
+    		android:numColumns="auto_fit"
+    		android:verticalSpacing="10dp"
+    		android:horizontalSpacing="10dp"
+    		android:stretchMode="columnWidth"
+    		android:gravity="center" />
+
+    </RelativeLayout>
+</RelativeLayout><!-- From: file:/home/krix/StudioProjects/AbcSjov/app/src/main/res/layout/main.xml -->
