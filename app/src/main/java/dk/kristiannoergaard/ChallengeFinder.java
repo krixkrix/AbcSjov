@@ -28,6 +28,7 @@ public class ChallengeFinder {
 		// init map
 		challengeMap.clear();
 		challengeMap.put("questions_ks", new ArrayList<Challenge>());
+		challengeMap.put("questions_bf", new ArrayList<Challenge>());
 		challengeMap.put("questions_bft", new ArrayList<Challenge>());
 		challengeMap.put("firstLetter1", new ArrayList<Challenge>());
 		challengeMap.put("firstLetter2", new ArrayList<Challenge>());
@@ -85,7 +86,7 @@ public class ChallengeFinder {
 	
 	public Challenge next( int mLevel, int mScore ){
 		
-    	int nOptions = 2;
+    	int nOptions = 1;
     	mChallengeTag = "";
     	
     	if (mLevel == 1){
@@ -101,7 +102,7 @@ public class ChallengeFinder {
     		nOptions = 4;
     	}
     	else if (mLevel == 4){
-    		mChallengeTag = "questions_bf";
+    		mChallengeTag = "questions_bft";
     		nOptions = 4;
     	}
     	else if (mLevel == 5 ){

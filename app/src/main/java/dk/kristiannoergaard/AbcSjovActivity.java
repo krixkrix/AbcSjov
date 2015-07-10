@@ -32,7 +32,7 @@ public class AbcSjovActivity extends Activity {
 	
 	// holds the current score 0-10
 	private int mScore = 0;
-	
+
 	// holds the current level: 1-n
 	private int mLevel = 1;
 	
@@ -89,7 +89,7 @@ public class AbcSjovActivity extends Activity {
     protected void onStart() {
     	super.onStart();
 
-		int newLevel = 1;
+		int newLevel = 2;
     	try
         {
     		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
@@ -201,8 +201,11 @@ public class AbcSjovActivity extends Activity {
     	gridview.setAdapter(new ButtonAdapter(this, options) );
     	mAcceptButtonPress = true;
     }
-    
-    void popup(boolean good){
+
+	/**
+	 * @param good: indicates if the popup should display success or failure
+	 */
+	void popup(boolean good){
     	
     	ImageView smiley = new ImageView(AbcSjovActivity.this);
     	if ( good )

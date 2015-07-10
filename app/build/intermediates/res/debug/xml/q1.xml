@@ -19,7 +19,7 @@
    <question id="@drawable/stole" answer="S" options="BFKST" />
    <question id="@drawable/svane" answer="S" options="BFKST" />
 </questions_ks>
-<questions_bf>
+<questions_bft>
    <question id="@drawable/balloner" answer="B" options="BFKST"/>
    <question id="@drawable/banan" answer="B" options="BFKST" />
    <question id="@drawable/bi" answer="B" options="BFKST" />
@@ -41,7 +41,7 @@
    <question id="@drawable/tiger" answer="T" options="BFKST"/>
    <question id="@drawable/tomater" answer="T" options="BFKST" />
    <question id="@drawable/trae" answer="T" options="BFKST"/>
-</questions_bf>
+</questions_bft>
 
 <!-- first letter is BFIKST -->
 <firstLetter1>
