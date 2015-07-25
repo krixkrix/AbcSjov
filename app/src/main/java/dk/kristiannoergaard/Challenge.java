@@ -5,6 +5,7 @@ public class Challenge implements Cloneable {
 	public String answer;
 	public String avoid;
 	public String options;
+	public int nOptions;
 	
 	public Object clone() {
 		try {

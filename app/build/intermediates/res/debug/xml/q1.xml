@@ -1,179 +1,255 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-<questions_ks>
-   <question id="@drawable/kanin" answer="K" avoid="H" options="BFKST" />
-   <question id="@drawable/kat" answer="K" options="BFKST" />
-   <question id="@drawable/kop" answer="K" options="BFKST" />
-   <question id="@drawable/ko" answer="K" options="BFKST" />
-   <question id="@drawable/skib" answer="S" options="BFKST" />
-   <question id="@drawable/skildpadde" answer="S" options="BFKST" />
-   <question id="@drawable/sko" answer="S" options="BFKST" />
-   <question id="@drawable/sky" answer="S" options="BFKST" />
-   <question id="@drawable/slange" answer="S" options="BFKST" />
-   <question id="@drawable/sol" answer="S" options="BFKST" />
-   <question id="@drawable/sommerfugl" answer="S" options="BFKST" />
-   <question id="@drawable/ske" answer="S" options="BFKST" />
-   <question id="@drawable/slikkepind" answer="S" options="BFKST" />
-   <question id="@drawable/stjerner" answer="S" options="BFKST" />
-   <question id="@drawable/stole" answer="S" options="BFKST" />
-   <question id="@drawable/svane" answer="S" options="BFKST" />
-</questions_ks>
-<questions_bft>
-   <question id="@drawable/balloner" answer="B" options="BFKST"/>
-   <question id="@drawable/banan" answer="B" options="BFKST" />
-   <question id="@drawable/bi" answer="B" options="BFKST" />
-   <question id="@drawable/bil" answer="B" options="BFKST" />
-   <question id="@drawable/blomster" answer="B" options="BFKST" />
-   <question id="@drawable/bog" answer="B" options="BFKST" />
-   <question id="@drawable/bord" answer="B" options="BFKST" />
-   <question id="@drawable/briller" answer="B" options="BFKST" />
-   <question id="@drawable/bukser" answer="B" avoid="JD" options="BFKST"/>
-   <question id="@drawable/bus" answer="B" options="BFKST"/>
-   <question id="@drawable/fingre" answer="F" avoid="H" options="BFKST"/>
-   <question id="@drawable/fisk" answer="F" options="BFKST" />
-   <question id="@drawable/flag" answer="F" options="BFKST" />
-   <question id="@drawable/fly" answer="F" options="BFKST" />
-   <question id="@drawable/fod" answer="F" options="BFKST" />
-   <question id="@drawable/fodbold" answer="F" avoid="B" options="BFKST"/>
-   <question id="@drawable/froe" answer="F" options="BFKST" />
-   <question id="@drawable/taske" answer="T" options="BFKST"/>
-   <question id="@drawable/tiger" answer="T" options="BFKST"/>
-   <question id="@drawable/tomater" answer="T" options="BFKST" />
-   <question id="@drawable/trae" answer="T" options="BFKST"/>
-</questions_bft>
+    <level l="1" options="2" >
+        <question id="@drawable/kanin" answer="K" avoid="H" options="BFKST" />
+        <question id="@drawable/kat" answer="K" options="BFKST" />
+        <question id="@drawable/ko" answer="K" options="BFKST" />
+        <question id="@drawable/skildpadde" answer="S" options="BFKST" />
+        <question id="@drawable/sko" answer="S" options="BFKST" />
+        <question id="@drawable/sky" answer="S" options="BFKST" />
+        <question id="@drawable/sol" answer="S" options="BFKST" />
+        <question id="@drawable/ske" answer="S" options="BFKST" />
+        <question id="@drawable/slikkepind" answer="S" options="BFKST" />
+        <question id="@drawable/svane" answer="S" options="BFKST" />
+    </level>
+    <level l="2" options="2">
+        <question id="@drawable/balloner" answer="B" options="BFKST"/>
+        <question id="@drawable/bil" answer="B" options="BFKST" />
+        <question id="@drawable/blomster" answer="B" options="BFKST" />
+        <question id="@drawable/bog" answer="B" options="BFKST" />
+        <question id="@drawable/bukser" answer="B" avoid="JD" options="BFKST"/>
+        <question id="@drawable/bus" answer="B" options="BFKST"/>
+        <question id="@drawable/fingre" answer="F" avoid="H" options="BFKST"/>
+        <question id="@drawable/fisk" answer="F" options="BFKST" />
+        <question id="@drawable/flag" answer="F" options="BFKST" />
+        <question id="@drawable/fod" answer="F" options="BFKST" />
+        <question id="@drawable/froe" answer="F" options="BFKST" />
+        <question id="@drawable/taske" answer="T" options="BFKST"/>
+        <question id="@drawable/tiger" answer="T" options="BFKST"/>
+    </level>
+    <level l="3" options="4" >
+        <question id="@drawable/kat" answer="K" options="BFKST" />
+        <question id="@drawable/kop" answer="K" options="BFKST" />
+        <question id="@drawable/skib" answer="S" options="BFKST" />
+        <question id="@drawable/sko" answer="S" options="BFKST" />
+        <question id="@drawable/sky" answer="S" options="BFKST" />
+        <question id="@drawable/slange" answer="S" options="BFKST" />
+        <question id="@drawable/sommerfugl" answer="S" options="BFKST" />
+        <question id="@drawable/stjerner" answer="S" options="BFKST" />
+        <question id="@drawable/stole" answer="S" options="BFKST" />
+        <question id="@drawable/snowman" answer="S" options="BFKST" />
+    </level>
+    <level l="4" options="4">
+        <question id="@drawable/banan" answer="B" options="BFKST" />
+        <question id="@drawable/bi" answer="B" options="BFKST" />
+        <question id="@drawable/bord" answer="B" options="BFKST" />
+        <question id="@drawable/briller" answer="B" options="BFKST" />
+        <question id="@drawable/bukser" answer="B" avoid="JD" options="BFKST"/>
+        <question id="@drawable/bus" answer="B" options="BFKST"/>
+        <question id="@drawable/fingre" answer="F" avoid="H" options="BFKST"/>
+        <question id="@drawable/fly" answer="F" options="BFKST" />
+        <question id="@drawable/fodbold" answer="F" avoid="B" options="BFKST"/>
+        <question id="@drawable/tomater" answer="T" options="BFKST" />
+        <question id="@drawable/trae" answer="T" options="BFKST"/>
+    </level>
 
-<!-- first letter is BFIKST -->
-<firstLetter1>
-   <question id="@drawable/balloner" answer="B" options="BKST"/>
-   <question id="@drawable/banan" answer="B" />
-   <question id="@drawable/bi" answer="B" />
-   <question id="@drawable/bil" answer="B" />
-   <question id="@drawable/bjoern" answer="B" />
-   <question id="@drawable/blomster" answer="B" />
-   <question id="@drawable/bog" answer="B" />
-   <question id="@drawable/bord" answer="B" />
-   <question id="@drawable/briller" answer="B" />
-   <question id="@drawable/bukser" answer="B" avoid="JD"/>
-   <question id="@drawable/bus" answer="B" />
-   <question id="@drawable/fingre" answer="F" avoid="H"/>
-   <question id="@drawable/fisk" answer="F" />
-   <question id="@drawable/flag" answer="F" />
-   <question id="@drawable/fly" answer="F" />
-   <question id="@drawable/fod" answer="F" />
-   <question id="@drawable/fodbold" answer="F" avoid="B"/>
-   <question id="@drawable/froe" answer="F" />
-   <question id="@drawable/is" answer="I" avoid="V"/>
-   <question id="@drawable/kanin" answer="K" avoid="H" />
-   <question id="@drawable/kat" answer="K" />
-   <question id="@drawable/kop" answer="K" />
-   <question id="@drawable/ko" answer="K" />
-   <question id="@drawable/skib" answer="S" />
-   <question id="@drawable/skildpadde" answer="S" />
-   <question id="@drawable/sko" answer="S" />
-   <question id="@drawable/sky" answer="S" />
-   <question id="@drawable/slange" answer="S" />
-   <question id="@drawable/sol" answer="S" />
-   <question id="@drawable/sommerfugl" answer="S" />
-   <question id="@drawable/ske" answer="S" />
-   <question id="@drawable/slikkepind" answer="S" />
-   <question id="@drawable/stjerner" answer="S" />
-   <question id="@drawable/stole" answer="S" />
-   <question id="@drawable/svane" answer="S" />
-   <question id="@drawable/taske" answer="T" />
-   <question id="@drawable/tiger" answer="T" />
-   <question id="@drawable/tomater" answer="T" />
-   <question id="@drawable/trae" answer="T" />
-</firstLetter1>
+    <!-- first letter is BFIKST -->
+    <level l="5" options="3">
+        <question id="@drawable/banan" answer="B" />
+        <question id="@drawable/bi" answer="B" />
+        <question id="@drawable/briller" answer="B" />
+        <question id="@drawable/bus" answer="B" />
+        <question id="@drawable/fingre" answer="F" avoid="H"/>
+        <question id="@drawable/froe" answer="F" />
+        <question id="@drawable/is" answer="I" avoid="V"/>
+        <question id="@drawable/kanin" answer="K" avoid="H" />
+        <question id="@drawable/kat" answer="K" />
+        <question id="@drawable/slikkepind" answer="S" />
+        <question id="@drawable/stjerner" answer="S" />
+        <question id="@drawable/stole" answer="S" />
+    </level>
+    <level l="6" options="6">
+        <question id="@drawable/balloner" answer="B" options="BKST"/>
+        <question id="@drawable/blomster" answer="B" />
+        <question id="@drawable/bog" answer="B" />
+        <question id="@drawable/bord" answer="B" />
+        <question id="@drawable/fisk" answer="F" />
+        <question id="@drawable/flag" answer="F" />
+        <question id="@drawable/kop" answer="K" />
+        <question id="@drawable/ko" answer="K" />
+        <question id="@drawable/skib" answer="S" />
+        <question id="@drawable/skildpadde" answer="S" />
+        <question id="@drawable/ske" answer="S" />
+        <question id="@drawable/svane" answer="S" />
+        <question id="@drawable/taske" answer="T" />
+    </level>
+    <level l="7" options="9">
+        <question id="@drawable/bil" answer="B" />
+        <question id="@drawable/bjoern" answer="B" />
+        <question id="@drawable/bukser" answer="B" avoid="JD"/>
+        <question id="@drawable/fly" answer="F" />
+        <question id="@drawable/fod" answer="F" />
+        <question id="@drawable/sko" answer="S" />
+        <question id="@drawable/sky" answer="S" />
+        <question id="@drawable/sol" answer="S" />
+        <question id="@drawable/sommerfugl" answer="S" />
+        <question id="@drawable/tiger" answer="T" />
+        <question id="@drawable/tomater" answer="T" />
+        <question id="@drawable/trae" answer="T" />
+        <question id="@drawable/tent" answer="T" />
+    </level>
 
 <!-- first letter  -->
-<firstLetter2>
-   <question id="@drawable/arm" answer="A" avoid="H" />
-   <question id="@drawable/doer" answer="D" />
-   <question id="@drawable/egern" answer="E" />
-   <question id="@drawable/elefant" answer="E" />
-   <question id="@drawable/gaffel" answer="G" />
-   <question id="@drawable/giraf" answer="G" />
-   <question id="@drawable/glas" answer="G" />
-   <question id="@drawable/guitar" answer="G" />  
-   <question id="@drawable/guleroedder" answer="G" />
-   <question id="@drawable/haand" answer="H" avoid="FA" />
-   <question id="@drawable/hat" answer="H" />
-   <question id="@drawable/hest" answer="H" />
-   <question id="@drawable/hund" answer="H" />
-   <question id="@drawable/hus" answer="H" avoid="V"/>
-   <question id="@drawable/klaver" answer="K" />
-   <question id="@drawable/kniv" answer="K" />
-   <question id="@drawable/loeve" answer="L" />
-   <question id="@drawable/mariehoene" answer="M" />
-   <question id="@drawable/majs" answer="M" />
-   <question id="@drawable/mus" answer="M" avoid="RH"/>
-   <question id="@drawable/myre" answer="M" />
-   <question id="@drawable/naesehorn" answer="N" />
-   <question id="@drawable/oeje" answer="Ø" />
-   <question id="@drawable/oere" answer="Ø" />
-   <question id="@drawable/rose" answer="R" avoid="B" />
-</firstLetter2>
+    <level l="8" options="4">
+        <question id="@drawable/arm" answer="A" avoid="H" />
+        <question id="@drawable/doer" answer="D" />
+        <question id="@drawable/egern" answer="E" />
+        <question id="@drawable/elefant" answer="E" />
+        <question id="@drawable/fodbold" answer="F" avoid="B"/>
+        <question id="@drawable/gaffel" answer="G" />
+        <question id="@drawable/giraf" answer="G" />
+        <question id="@drawable/glas" answer="G" />
+        <question id="@drawable/hest" answer="H" />
+        <question id="@drawable/hund" answer="H" />
+        <question id="@drawable/hus" answer="H" avoid="V"/>
+    </level>
+    <level l="9" options="6">
+        <question id="@drawable/klaver" answer="K" />
+        <question id="@drawable/kniv" answer="K" />
+        <question id="@drawable/loeve" answer="L" />
+        <question id="@drawable/mariehoene" answer="M" />
+        <question id="@drawable/mus" answer="M" avoid="RH"/>
+        <question id="@drawable/myre" answer="M" />
+        <question id="@drawable/naesehorn" answer="N" />
+        <question id="@drawable/oeje" answer="Ø" />
+        <question id="@drawable/oere" answer="Ø" />
+        <question id="@drawable/rose" answer="R" avoid="B" />
+        <question id="@drawable/slange" answer="S" avoid="H"/>
+        <question id="@drawable/stige" answer="S" avoid="T"/>
+    </level>
 
-<!-- first letter is not very easy -->
-<firstLetter3>
-   <question id="@drawable/appelsin" answer="A" />
-   <question id="@drawable/edderkop" answer="E" avoid="Æ" />
-   <question id="@drawable/krokodille" answer="K" avoid="A"/>
-   <question id="@drawable/aeble" answer="Æ" />
-</firstLetter3>
+    <!-- first letter is not very easy -->
+    <level l="10" options="4">
+        <question id="@drawable/appelsin" answer="A" />
+        <question id="@drawable/edderkop" answer="E" avoid="Æ" />
+        <question id="@drawable/guitar" answer="G" />
+        <question id="@drawable/guleroedder" answer="G" />
+        <question id="@drawable/gynge" answer="G" />
+        <question id="@drawable/helikopter" answer="H" />
+        <question id="@drawable/haand" answer="H" avoid="FA" />
+        <question id="@drawable/hat" answer="H" />
+        <question id="@drawable/strawberry" answer="J" />
+        <question id="@drawable/krokodille" answer="K" avoid="A"/>
+        <question id="@drawable/majs" answer="M" />
+        <question id="@drawable/pude" answer="P" avoud="D"/>
+        <question id="@drawable/rainbow" answer="R" />
+        <question id="@drawable/aeble" answer="Æ" />
+    </level>
 
-<!-- second letter is an obvious sounding 'vokal' -->
-<doubleLetter1>
-   <question id="@drawable/bi" answer="BI" />
-   <question id="@drawable/banan" answer="BA" />
-   <question id="@drawable/bord" answer="BO" />
-   <question id="@drawable/bus" answer="BU" />
-   <question id="@drawable/fod" answer="FO" />
-   <question id="@drawable/fodbold" answer="FO" />
-   <question id="@drawable/giraf" answer="GI" />
-   <question id="@drawable/hat" answer="HA" />
-   <question id="@drawable/hund" answer="HU" />
-   <question id="@drawable/hus" answer="HU" />
-   <question id="@drawable/kanin" answer="KA" avoid="HA" />
-   <question id="@drawable/kat" answer="KA" options="KA,KE,KO,KU,KY,KÆ,KØ,KÅ" />
-   <question id="@drawable/ko" answer="KO" />
-   <question id="@drawable/loeve" answer="LØ" />
-   <question id="@drawable/myre" answer="MY" />
-   <question id="@drawable/mus" answer="MU" />
-   <question id="@drawable/rose" answer="RO" />
-   <question id="@drawable/sol" answer="SO" />
-   <question id="@drawable/taske" answer="TA" />
-   <question id="@drawable/tiger" answer="TI" />
-   <question id="@drawable/tomater" answer="TO" />
-</doubleLetter1>
+    <!-- second letter is an obvious sounding 'vokal' -->
+    <level l="11" options="3">
+        <question id="@drawable/bi" answer="BI" />
+        <question id="@drawable/banan" answer="BA" />
+        <question id="@drawable/bord" answer="BO" />
+        <question id="@drawable/bus" answer="BU" />
+        <question id="@drawable/fod" answer="FO" />
+        <question id="@drawable/fodbold" answer="FO" />
+        <question id="@drawable/giraf" answer="GI" />
+        <question id="@drawable/hat" answer="HA" />
+        <question id="@drawable/hund" answer="HU" />
+        <question id="@drawable/hus" answer="HU" />
+        <question id="@drawable/kanin" answer="KA" avoid="HA" />
+    </level>
+    <level l="12" options="4">
+        <question id="@drawable/kat" answer="KA" options="KA,KE,KO,KU,KY,KÆ,KØ,KÅ" />
+        <question id="@drawable/ko" answer="KO" />
+        <question id="@drawable/kyllinger" answer="KY" options="KA,KE,KO,KU,KY,KÆ,KØ,KÅ" />
+        <question id="@drawable/loeve" answer="LØ" />
+        <question id="@drawable/myre" answer="MY" />
+        <question id="@drawable/mus" answer="MU" />
+        <question id="@drawable/rose" answer="RO" />
+        <question id="@drawable/sol" answer="SO" />
+        <question id="@drawable/taske" answer="TA" />
+        <question id="@drawable/tiger" answer="TI" />
+        <question id="@drawable/tomater" answer="TO" />
+    </level>
 
-<!-- second letter is an obvious sounding 'konsonant' -->
-<doubleLetter2>
-   <question id="@drawable/blomster" answer="BL" />
-   <question id="@drawable/briller" answer="BR" />
-   <question id="@drawable/flag" answer="FL" />
-   <question id="@drawable/fly" answer="FL" />
-   <question id="@drawable/froe" answer="FR" />
-   <question id="@drawable/glas" answer="GL" />
-   <question id="@drawable/stjerner" answer="ST" />
-   <question id="@drawable/skib" answer="SK" />
-   <question id="@drawable/skildpadde" answer="SK" />
-   <question id="@drawable/ske" answer="SK" />
-   <question id="@drawable/sko" answer="SK" />
-   <question id="@drawable/sky" answer="SK" />
-   <question id="@drawable/slange" answer="SL" />
-   <question id="@drawable/slikkepind" answer="SL" />
-   <question id="@drawable/svane" answer="SV" />
-   <question id="@drawable/trae" answer="TR" />
- </doubleLetter2>
+    <!-- second letter is an obvious sounding 'konsonant' -->
+    <level l="13" options="3">
+        <question id="@drawable/blomster" answer="BL" />
+        <question id="@drawable/briller" answer="BR" />
+        <question id="@drawable/bridge" answer="BR" />
+        <question id="@drawable/flag" answer="FL" />
+        <question id="@drawable/fly" answer="FL" />
+        <question id="@drawable/froe" answer="FR" />
+        <question id="@drawable/glas" answer="GL" />
+        <question id="@drawable/grass" answer="GR" />
+        <question id="@drawable/crocodile" answer="KR" />
+        <question id="@drawable/stjerner" answer="ST" />
+    </level>
+    <level l="14" options="6">
+        <question id="@drawable/skib" answer="SK" />
+        <question id="@drawable/skildpadde" answer="SK" />
+        <question id="@drawable/sko" answer="SK" />
+        <question id="@drawable/sky" answer="SK" />
+        <question id="@drawable/slange" answer="SL" />
+        <question id="@drawable/slikkepind" answer="SL" />
+        <question id="@drawable/stige" answer="ST" />
+        <question id="@drawable/castle" answer="SL" />
+        <question id="@drawable/svane" answer="SV" />
+        <question id="@drawable/trae" answer="TR" />
+    </level>
 
-<!-- second letter is a bit harder... -->
-<doubleLetter3>
-    <question id="@drawable/bjoern" answer="BJ" />
-    <question id="@drawable/gaffel" answer="GA" />
-    <question id="@drawable/majs" answer="MA" />
-    <question id="@drawable/kniv" answer="KN" />
-</doubleLetter3>
+
+    <level l="15" options="6">
+        <question id="@drawable/briller" answer="BR" />
+        <question id="@drawable/froe" answer="FR" />
+        <question id="@drawable/glas" answer="GL" />
+        <question id="@drawable/ske" answer="SK" />
+
+        <!-- second letter is a bit harder... -->
+        <question id="@drawable/bjoern" answer="BJ" />
+        <question id="@drawable/gaffel" answer="GA" />
+        <question id="@drawable/majs" answer="MA" />
+        <question id="@drawable/kniv" answer="KN" />
+        <question id="@drawable/graeshoppe" answer="GR" options="GJ,KR,KJ,GÆ,GR,KÆ" />
+        <question id="@drawable/snowman" answer="SN"  />
+    </level>
+
+    <level l="16" options="8">
+        <question id="@drawable/blomster" answer="BL" />
+        <question id="@drawable/briller" answer="BR" />
+        <question id="@drawable/bridge" answer="BR" />
+        <question id="@drawable/flag" answer="FL" />
+        <question id="@drawable/fly" answer="FL" />
+        <question id="@drawable/froe" answer="FR" />
+        <question id="@drawable/glas" answer="GL" />
+        <question id="@drawable/grass" answer="GR" />
+        <question id="@drawable/crocodile" answer="KR" />
+        <question id="@drawable/stjerner" answer="ST" />
+        <question id="@drawable/skib" answer="SK" />
+        <question id="@drawable/skildpadde" answer="SK" />
+        <question id="@drawable/sko" answer="SK" />
+        <question id="@drawable/sky" answer="SK" />
+        <question id="@drawable/slange" answer="SL" />
+        <question id="@drawable/slikkepind" answer="SL" />
+        <question id="@drawable/stige" answer="ST" />
+        <question id="@drawable/castle" answer="SL" />
+        <question id="@drawable/svane" answer="SV" />
+        <question id="@drawable/trae" answer="TR" />
+        <question id="@drawable/briller" answer="BR" />
+        <question id="@drawable/ske" answer="SK" />
+
+        <!-- second letter is a bit harder... -->
+        <question id="@drawable/bjoern" answer="BJ" />
+        <question id="@drawable/gaffel" answer="GA" />
+        <question id="@drawable/majs" answer="MA" />
+        <question id="@drawable/kniv" answer="KN" />
+        <question id="@drawable/graeshoppe" answer="GR" options="GJ,KR,KJ,GÆ,GR,KÆ" />
+        <question id="@drawable/snowman" answer="SN"  />
+    </level>
+
+
 </resources>
 <!-- From: file:/home/krix/StudioProjects/AbcSjov/app/src/main/res/xml/q1.xml -->

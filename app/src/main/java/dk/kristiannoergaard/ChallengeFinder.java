@@ -2,8 +2,6 @@ package dk.kristiannoergaard;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -13,33 +11,28 @@ import android.util.Log;
 
 public class ChallengeFinder {
 	
-	private Map<String, ArrayList<Challenge> > challengeMap = new HashMap<String, ArrayList<Challenge> >();
+	public ArrayList< ArrayList<Challenge> > challengeMap = new ArrayList< ArrayList<Challenge> > ();
+
 	private static final String TAG = "Q1XML";
 	private Random random = new Random();
-	private String mChallengeTag = new String();
-	private int mChallengeId = -1;
+	private int mChallengeLevel = -1;
+	private int mChallengeIndex = -1;
 	
 	public ChallengeFinder(){
 		xmlScan();
 	}
 	
 	private void xmlScan(){
-		
-		// init map
-		challengeMap.clear();
-		challengeMap.put("questions_ks", new ArrayList<Challenge>());
-		challengeMap.put("questions_bf", new ArrayList<Challenge>());
-		challengeMap.put("questions_bft", new ArrayList<Challenge>());
-		challengeMap.put("firstLetter1", new ArrayList<Challenge>());
-		challengeMap.put("firstLetter2", new ArrayList<Challenge>());
-		challengeMap.put("firstLetter3", new ArrayList<Challenge>());
-		challengeMap.put("doubleLetter1", new ArrayList<Challenge>());
-		challengeMap.put("doubleLetter2", new ArrayList<Challenge>());
-		
+
+		// the images can be scaled to 400px width by:
+		// mkdir results
+		// for f in *jpg; do echo "file $f"; convert "$f[400x>]" results/$f; done
+
 		// parse the XML data for challenges
 		// Get the Android-specific compiled XML parser.
 		ArrayList<Challenge> challenges = null;
-		
+        int nOptions = 3;
+
 		try {
 			XmlResourceParser xrp = AbcSjovActivity.getAppContext().getResources().getXml(R.xml.q1);
 
@@ -47,9 +40,10 @@ public class ChallengeFinder {
 				if (xrp.getEventType() == XmlResourceParser.START_TAG) {
 					String s = xrp.getName();
 
-					if ( challengeMap.containsKey( s ) ){
-						// s was firstLetter1 or similar
-						challenges = challengeMap.get(s);
+					if (s.equals("level")) {
+						challenges = new ArrayList<Challenge>();
+                        String optionStr = xrp.getAttributeValue(null, "options");
+                        nOptions = Integer.parseInt(optionStr);
 					}
 					else if (s.equals("question") && challenges != null ) {
 
@@ -58,11 +52,15 @@ public class ChallengeFinder {
 						ch.answer = xrp.getAttributeValue(null, "answer");
 						ch.avoid = xrp.getAttributeValue(null, "avoid");
 						ch.options = xrp.getAttributeValue(null, "options");
+                        ch.nOptions = nOptions;
 
 						challenges.add(ch);
 					}
 				} else if (xrp.getEventType() == XmlResourceParser.END_TAG) {
-					;
+					String s = xrp.getName();
+					if (s.equals("level")) {
+						challengeMap.add(challenges);
+					}
 				} else if (xrp.getEventType() == XmlResourceParser.TEXT) {
 					;
 				}
@@ -79,100 +77,28 @@ public class ChallengeFinder {
 	}
 	
 	public boolean removeLatestChallenge(){
-		ArrayList<Challenge> challenges = challengeMap.get(mChallengeTag);
-		challenges.remove(mChallengeId);
+		ArrayList<Challenge> challenges = challengeMap.get(mChallengeLevel-1);
+		challenges.remove(mChallengeIndex);
 		return true;
 	}
 	
-	public Challenge next( int mLevel, int mScore ){
-		
-    	int nOptions = 1;
-    	mChallengeTag = "";
-    	
-    	if (mLevel == 1){
-    		mChallengeTag = "questions_ks";
-    		nOptions = 2;
-    	}
-    	else if (mLevel == 2){
-    		mChallengeTag = "questions_bft";
-    		nOptions = 2;
-    	}
-    	else if (mLevel == 3){
-    		mChallengeTag = "questions_ks";
-    		nOptions = 4;
-    	}
-    	else if (mLevel == 4){
-    		mChallengeTag = "questions_bft";
-    		nOptions = 4;
-    	}
-    	else if (mLevel == 5 ){
-    		mChallengeTag = "firstLetter1";
-    		nOptions = 3;
-    	}
-    	else if (mLevel == 6 ){
-    		mChallengeTag = "firstLetter1";
-    		nOptions = 6;
-    	}
-    	else if (mLevel == 7 ){
-    		mChallengeTag = "firstLetter1";
-    		nOptions = 9;
-    	}
-    	else if (mLevel<10){
-    		mChallengeTag = "firstLetter2";
-    		switch (mLevel){
-    		case 6: nOptions = 6; break;
-    		case 7: nOptions = 7; break;
-    		case 8: nOptions = 8; break;
-    		case 9: nOptions = 9; break;
-    		default:nOptions = 9; break;
-    		}
-    	}
-    	else if (mLevel<16){
-    		mChallengeTag = "doubleLetter1";
-    		switch (mLevel){
-    		case 10: nOptions = 2; break;
-    		case 11: nOptions = 3; break;
-    		case 12: nOptions = 4; break;
-    		case 13: nOptions = 6; break;
-    		case 14: nOptions = 8; break;
-    		case 15: nOptions = 9; break;
-    		default:nOptions = 9; break;
-    		}
-    	}
-    	else if (mLevel<20){
-    		mChallengeTag = "doubleLetter2";
-    		switch (mLevel){
-    		case 16: nOptions = 2; break;
-    		case 17: nOptions = 3; break;
-    		case 18: nOptions = 4; break;
-    		case 19: nOptions = 6; break;
-    		case 20: nOptions = 9; break;
-    		default:nOptions = 9; break;
-    		}
-    	}
-    	else {
-    		if (mLevel%2==0)
-    			mChallengeTag = "doubleLetter2";
-    		else
-    			mChallengeTag = "doubleLetter1";
-    		
-    		nOptions = 9;
-    	}
-    	
-    	ArrayList<Challenge> challenges = challengeMap.get(mChallengeTag);
+	public Challenge next( int mLevel, int mScore ) {
+
+        if (challengeMap == null){
+            xmlScan();
+        }
+
+        mChallengeLevel = mLevel;
+
+        ArrayList<Challenge> challenges = challengeMap.get(mLevel-1);
     	int max = challenges.size();
-    	if ( max == 0 ){
-    		xmlScan();
-    		challenges = challengeMap.get(mChallengeTag);
-        	max = challenges.size();
-    	}
-    	
-    	mChallengeId = random.nextInt(max);
+
+    	mChallengeIndex = random.nextInt(max);
     	
     	// clone challenge so we can modify the options freely
-    	Challenge ch = (Challenge) challenges.get(mChallengeId).clone();
+    	Challenge ch = (Challenge) challenges.get(mChallengeIndex).clone();
     	
-    	ch.options = makeOptions( nOptions, ch.answer, ch.options, ch.avoid );
+    	ch.options = makeOptions( ch.nOptions, ch.answer, ch.options, ch.avoid );
     	return ch;
 	}
 	
