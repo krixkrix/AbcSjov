@@ -10,7 +10,7 @@
     <string name="scorelabel">Score:</string>
     <string name="preflevel">Sværhedsgrad</string>
     <string name="preflevelsummary">Vælg sværhedsgrad</string>
-    
+
     <string-array name="levellistlabels">
         <item>Level 1</item>
         <item>Level 2</item>
@@ -40,5 +40,23 @@
         <item>11</item>
         <item>12</item>
     </string-array>
+
+    <string name="challengedelay">Pause mellem opgaver</string>
+    <string name="challengedelaysummary">Vælg pausens længde</string>
+
+    <string-array name="challengedelaylistlabels">
+        <item>400ms</item>
+        <item>700ms</item>
+        <item>1000ms</item>
+        <item>1300ms</item>
+    </string-array>
+
+    <string-array name="challengedelaylist">
+        <item>400</item>
+        <item>700</item>
+        <item>1000</item>
+        <item>1300</item>
+    </string-array>
+
 
 </resources>

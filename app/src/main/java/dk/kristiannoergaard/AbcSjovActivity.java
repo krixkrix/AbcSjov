@@ -35,6 +35,9 @@ public class AbcSjovActivity extends Activity {
 
 	// holds the current level: 1-n
 	private int mLevel = 1;
+
+	// the delay between challenges
+	private int mChallengeDelayMs = 1000;
 	
 	// flag to indicate when the user can give his answer.
 	private boolean mAcceptButtonPress = true;
@@ -95,6 +98,8 @@ public class AbcSjovActivity extends Activity {
     		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
     		String levelStr = prefs.getString("levelPref", "?");
     		newLevel = Integer.parseInt (levelStr);
+
+			mChallengeDelayMs = Integer.parseInt(prefs.getString("challengedelay", "?"));
         }
     	catch(NumberFormatException e)
         {
@@ -118,8 +123,8 @@ public class AbcSjovActivity extends Activity {
     	// Perform action on clicks
     	mAcceptButtonPress = false;
     	boolean correct = s.equals(mCorrectAnswer);
-    	
-    	popup(correct);
+
+    	popup(correct, mChallengeDelayMs);
     	
     	if ( correct ){
     		mScore++;
@@ -138,36 +143,12 @@ public class AbcSjovActivity extends Activity {
         }   	          
    	    updateScoreLevel();
    	    
-/*
-   	    Handler handler = new Handler(); 
-        handler.postDelayed(new Runnable() { 
-             public void run() {
-            	 updateScoreLevel();
-             } 
-        }, 800);
-        
-        handler.postDelayed(new Runnable() { 
-            public void run() {
-           	    if ( mScore == 10 ){
-                	mScore = 0;
-                	mLevel++;
-                	updateScoreLevel();
-                }
-           	    if ( mLevel == 16 ){
-           	    	// start over
-           	    	mScore = 0;
-           	    	mLevel = 1;
-           	    	updateScoreLevel();
-           	    }
-            } 
-       }, 1500);
-        */
-   	   Handler handler = new Handler(); 
+   	   Handler handler = new Handler();
        handler.postDelayed(new Runnable() { 
             public void run() {
             	setNextChallenge();
             } 
-       }, 1300); 
+       }, mChallengeDelayMs + 300);
     }
     
     void updateScoreLevel(){
@@ -205,7 +186,7 @@ public class AbcSjovActivity extends Activity {
 	/**
 	 * @param good: indicates if the popup should display success or failure
 	 */
-	void popup(boolean good){
+	void popup(boolean good, int delayMs){
     	
     	ImageView smiley = new ImageView(AbcSjovActivity.this);
     	if ( good )
@@ -227,7 +208,7 @@ public class AbcSjovActivity extends Activity {
            public void run() {
                toast2.cancel(); 
            }
-        }, 1000);
+        }, delayMs);
 
     }
    

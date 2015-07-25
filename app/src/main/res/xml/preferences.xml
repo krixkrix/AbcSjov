@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory>
         <!-- 
                 <CheckBoxPreference
@@ -8,13 +8,21 @@
                         android:summary="This preference can be true or false"
                         android:key="checkboxPref" />
                 -->
-                <ListPreference
-                        android:title="@string/preflevel"
-                        android:summary="@string/preflevelsummary"
-                        android:key="levelPref"
-                        android:defaultValue="1"
-                        android:entries="@array/levellistlabels"
-                        android:entryValues="@array/levellist" />
-        </PreferenceCategory>
+        <ListPreference
+            android:title="@string/preflevel"
+            android:summary="@string/preflevelsummary"
+            android:key="levelPref"
+            android:defaultValue="1"
+            android:entries="@array/levellistlabels"
+            android:entryValues="@array/levellist" />
+
+        <ListPreference
+            android:title="@string/challengedelay"
+            android:summary="@string/challengedelaysummary"
+            android:key="challengedelay"
+            android:defaultValue="1000"
+            android:entries="@array/challengedelaylistlabels"
+            android:entryValues="@array/challengedelaylist" />
+    </PreferenceCategory>
 
 </PreferenceScreen>
