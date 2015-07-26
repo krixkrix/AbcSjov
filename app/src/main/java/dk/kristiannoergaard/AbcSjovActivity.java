@@ -2,8 +2,9 @@ package dk.kristiannoergaard;
 
 /*
  * TODO:
- * Double letter questions: bj/br/bl  st/sk/sp/sn/sl
- * Preferences options: limit type of questions. Set start level
+ * Loop last challenge
+ * Challenges with hard options like k and g, b and p
+ * Something special to happen between levels
  */  
 
 import android.app.Activity;
@@ -27,7 +28,7 @@ public class AbcSjovActivity extends Activity {
 	
 	public static final String PREFS_NAME = "AbcPrefsFile";
 	
-	// holds the correct ansewr for the active challenge
+	// holds the correct answer for the active challenge
 	private String mCorrectAnswer = "?";
 	
 	// holds the current score 0-10
@@ -36,7 +37,7 @@ public class AbcSjovActivity extends Activity {
 	// holds the current level: 1-n
 	private int mLevel = 1;
 
-	// the delay between challenges
+	// the delay between challenges (configurable)
 	private int mChallengeDelayMs = 1000;
 	
 	// flag to indicate when the user can give his answer.
@@ -92,7 +93,7 @@ public class AbcSjovActivity extends Activity {
     protected void onStart() {
     	super.onStart();
 
-		int newLevel = 2;
+		int newLevel;
     	try
         {
     		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
@@ -140,22 +141,35 @@ public class AbcSjovActivity extends Activity {
     	if ( mScore == 10 ){
         	mScore = 0;
         	mLevel++;
-        }   	          
-   	    updateScoreLevel();
-   	    
-   	   Handler handler = new Handler();
-       handler.postDelayed(new Runnable() { 
+        }
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
             public void run() {
-            	setNextChallenge();
-            } 
-       }, mChallengeDelayMs + 300);
-    }
+                setNextChallenge();
+            }
+        }, mChallengeDelayMs + 300);
+
+		updateScoreLevel();
+
+		// debug mode auto answer
+        boolean autoanswer = false;
+        if (autoanswer) {
+            Handler handler2 = new Handler();
+            handler2.postDelayed(new Runnable() {
+                public void run() {
+                    autoAnswer();
+                }
+            }, mChallengeDelayMs + 500);
+        }
+
+	}
     
     void updateScoreLevel(){
     	final RatingBar score = (RatingBar) findViewById(R.id.score);
         score.setRating(mScore);
         final TextView level = (TextView) findViewById(R.id.level);
-        level.setText( Integer.toString(mLevel) );
+        level.setText(Integer.toString(mLevel));
     }
     
     void setNextChallenge(){
@@ -179,7 +193,7 @@ public class AbcSjovActivity extends Activity {
     	}
     	        
     	gridview.setNumColumns(nColumns);
-    	gridview.setAdapter(new ButtonAdapter(this, options) );
+    	gridview.setAdapter(new ButtonAdapter(this, options));
     	mAcceptButtonPress = true;
     }
 
@@ -210,6 +224,10 @@ public class AbcSjovActivity extends Activity {
            }
         }, delayMs);
 
+    }
+
+    void autoAnswer(){
+        answer(mCorrectAnswer);
     }
    
 }

@@ -2,6 +2,8 @@ package dk.kristiannoergaard;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -12,16 +14,17 @@ import android.util.Log;
 public class ChallengeFinder {
 	
 	public ArrayList< ArrayList<Challenge> > challengeMap = new ArrayList< ArrayList<Challenge> > ();
-
+	public ArrayList<Challenge> mLastChallengeSet = null;
 	private static final String TAG = "Q1XML";
 	private Random random = new Random();
-	private int mChallengeLevel = -1;
-	private int mChallengeIndex = -1;
+	private int mUsedChallengeMapIndex = -1;
+	private int mUsedChallengeIndex = -1;
 	
 	public ChallengeFinder(){
 		xmlScan();
 	}
-	
+
+    @SuppressWarnings("unchecked")
 	private void xmlScan(){
 
 		// the images can be scaled to 400px width by:
@@ -62,41 +65,57 @@ public class ChallengeFinder {
 						challengeMap.add(challenges);
 					}
 				} else if (xrp.getEventType() == XmlResourceParser.TEXT) {
-					;
+					// pass
 				}
 				xrp.next();
 			}
             xrp.close();
-		} catch (XmlPullParserException xppe) {
+
+            mLastChallengeSet = (ArrayList<Challenge>) challenges.clone();
+
+        } catch (XmlPullParserException xppe) {
 			Log.e(TAG, "Failure of .getEventType or .next, probably bad file format");
 			xppe.toString();
 		} catch (IOException ioe) {
 			Log.e(TAG, "Unable to read resource file");
 			ioe.printStackTrace();
 		}
+        catch (NullPointerException e) {
+            Log.e(TAG, "NullPointerException in scanXml");
+            e.printStackTrace();
+        }
 	}
 	
 	public boolean removeLatestChallenge(){
-		ArrayList<Challenge> challenges = challengeMap.get(mChallengeLevel-1);
-		challenges.remove(mChallengeIndex);
+		ArrayList<Challenge> challenges = challengeMap.get(mUsedChallengeMapIndex);
+		challenges.remove(mUsedChallengeIndex);
 		return true;
 	}
-	
+
+    @SuppressWarnings("unchecked")
 	public Challenge next( int mLevel, int mScore ) {
 
         if (challengeMap == null){
             xmlScan();
         }
 
-        mChallengeLevel = mLevel;
+		// if level has increased beyond the defined challenges, pick the last challenge
+		if (challengeMap.size() >= mLevel)
+			mUsedChallengeMapIndex = mLevel-1;
+		else
+			mUsedChallengeMapIndex = challengeMap.size()-1;
 
-        ArrayList<Challenge> challenges = challengeMap.get(mLevel-1);
-    	int max = challenges.size();
+		ArrayList<Challenge> challenges = challengeMap.get(mUsedChallengeMapIndex);
 
-    	mChallengeIndex = random.nextInt(max);
+		if (challenges.size() == 0){
+    	    challengeMap.set(mUsedChallengeMapIndex, (ArrayList<Challenge>)  mLastChallengeSet.clone());
+			challenges = challengeMap.get(mUsedChallengeMapIndex);
+		}
+
+    	mUsedChallengeIndex = random.nextInt(challenges.size());
     	
     	// clone challenge so we can modify the options freely
-    	Challenge ch = (Challenge) challenges.get(mChallengeIndex).clone();
+    	Challenge ch = (Challenge) challenges.get(mUsedChallengeIndex).clone();
     	
     	ch.options = makeOptions( ch.nOptions, ch.answer, ch.options, ch.avoid );
     	return ch;
@@ -117,104 +136,148 @@ public class ChallengeFinder {
 	}
 	
 	private String makeTwoLetterOptions(int n, String answer, String longOptions, String avoid){
+
+
+        if (longOptions != null && longOptions.length() > 0)
+            return selectTwoLetterOptions(n, answer, longOptions);
+
 		String vokaler = "AEIOUYÆØÅ";
 		char c1 = answer.charAt(1);
 		if ( vokaler.indexOf(c1) != -1 ) {
-			return makeTwoLetterOptions1(n, answer, longOptions, avoid);
-		}
-		else {
-			return makeTwoLetterOptions2(n, answer, longOptions, avoid);
+            return generateAutoOptionsVokal(n, answer, avoid);
+        } else {
+            return generateAutoOptionsConsonant(n, answer, avoid);
 		}
 	}	
 	
 	// make 2-letter options with 'vokal' as second letter
-	private String makeTwoLetterOptions1(int n, String answer, String longOptions, String avoid){
-		String vokaler = "AEIOUYÆØÅ";
-		
-		char c1 = answer.charAt(1);
-		int pos = random.nextInt(n);
-		ArrayList<String> options = new ArrayList<String>(); 
-		for (int i=0; i<n; i++){
-			if ( i == pos ){
-				// input correct answer as option
-				options.add(answer);
-			}
-			else {
-				// find a random 'vokal' different from correct answer
-				while ( true ){
-					char a = vokaler.charAt( random.nextInt( vokaler.length() ));
-					if ( a == c1 )
-						continue;
-					String candidate = answer.substring(0, 1) + Character.toString(a);
-					if ( options.contains(candidate) ) 
-						continue;
-					// new character found
-					options.add(candidate);
-					break;
-				}
-			}
-		}
+	private String generateAutoOptionsVokal(int nOptions, String answer, String avoid) {
 
-		return joinArray( options );
-	}
-		
-	// make 2-letter options with no 'vokaler' 
-	private String makeTwoLetterOptions2(int n, String answer, String longOptions, String avoid){
-		// which letters can follow 
-		String bOptions = "JLR";
-		String dOptions = "R";
-		String fOptions = "JLR";
-		String gOptions = "JLR";
-		String kOptions = "JLR";
-		String pOptions = "JLR";
-		String sOptions = "JKLMNPTV";
-		String tOptions = "JR";
-		char c0 = answer.charAt(0);
-		char c1 = answer.charAt(1);
-		
-		String allOptions;
-		switch(c0){
-		case 'B': allOptions = bOptions; break;
-		case 'D': allOptions = dOptions; break;
-		case 'F': allOptions = fOptions; break;
-		case 'G': allOptions = gOptions; break;
-		case 'K': allOptions = kOptions; break;
-		case 'P': allOptions = pOptions; break;
-		case 'S': allOptions = sOptions; break;
-		case 'T': allOptions = tOptions; break;
-		default: allOptions = "XXXXX"; break;
-		}
-		
-		if ( n > allOptions.length())
-			n = allOptions.length();
-				
-		int pos = random.nextInt(n);
-		ArrayList<String> options = new ArrayList<String>(); 
-		for (int i=0; i<n; i++){
-			if ( i == pos ){
-	       		// input correct answer as option
-	       		options.add(answer);
-	       	}
-	      	else {
-	       		// find a random 'vokal' different from correct answer
-	       		while ( true ){
-	       			char a = allOptions.charAt( random.nextInt( allOptions.length() ));
-	       			if ( a == c1 )
-	        			continue;
-	        		String candidate = answer.substring(0, 1) + Character.toString(a);
-	        		if ( options.contains(candidate) ) 
-	        			continue;
-	        		// new character found
-	        		options.add(candidate);
-	        		break;
-	        	}
-	        }
-		}
-			
-		return joinArray( options );
-	}
-		
-	private String joinArray(ArrayList<String> list){
+        String vokaler = "A,E,I,O,U,Y,Æ,Ø,Å";
+        ArrayList<String> vokalerList = new ArrayList<String>(Arrays.asList(vokaler.split(",")));
+
+        String c0 = answer.substring(0, 1);
+        String c1 = answer.substring(1,2);
+        Collections.shuffle(vokalerList);
+
+        ArrayList<String> options = new ArrayList<String>();
+        options.add(answer);
+
+        if (nOptions > vokalerList.size())
+            nOptions = vokalerList.size();
+
+        int i = 0;
+        while (options.size() < nOptions) {
+
+            // add if different from answer
+            if (!c1.equals(vokalerList.get(i)))
+                options.add(c0 + vokalerList.get(i));
+
+            i++;
+        }
+
+        Collections.shuffle(options);
+        return joinArray(options);
+    }
+
+	// generate 2-letter options with no 'vokaler'
+    private String generateAutoOptionsConsonant(int nOptions, String answer, String avoid){
+
+        char c0 = answer.charAt(0);
+        String allOptionsStr;
+        switch (c0) {
+            case 'B':
+                allOptionsStr = "BJ,BL,BR,BV";
+                break;
+            case 'D':
+                allOptionsStr = "DJ,DL,DR,DV";
+                break;
+            case 'F':
+                allOptionsStr = "FJ,FL,FR,FV";
+                break;
+            case 'G':
+                allOptionsStr = "GJ,GL,GR,GV";
+                break;
+            case 'K':
+                allOptionsStr = "KJ,KL,KR,KV";
+                break;
+            case 'P':
+                allOptionsStr = "PJ,PL,PR,PV";
+                break;
+            case 'S':
+                allOptionsStr = "SJ,SK,SL,SM,SN,SP,ST,SV";
+                break;
+            case 'T':
+                allOptionsStr = "TJ,TR,TN,TV";
+                break;
+            default:
+                allOptionsStr = "XX,YY,ZZ";
+                break;
+        }
+
+        ArrayList<String> allOptions = new ArrayList<String>(Arrays.asList(allOptionsStr.split(",")));
+        Collections.shuffle(allOptions);
+
+        ArrayList<String> options = new ArrayList<String>();
+        options.add(answer);
+
+        if (nOptions > allOptions.size() )
+            nOptions = allOptions.size();
+
+        int i = 0;
+        while (options.size() < nOptions) {
+
+            // add if different from answer
+            if (!answer.equals(allOptions.get(i)))
+                options.add(allOptions.get(i));
+
+            i++;
+        }
+
+        Collections.shuffle(options);
+        return joinArray(options);
+
+    }
+
+    // select n options from the string allOptionsStr
+    // make sure it contains 'answer'
+    private String selectTwoLetterOptions(int nOptions, String answer, String allOptionsStr){
+
+        String[] allOptions = allOptionsStr.split(",");
+
+        int n = nOptions;
+        if ( n > allOptions.length)
+            n = allOptions.length;
+
+        int posAnswer = random.nextInt(n);
+
+        ArrayList<String> options = new ArrayList<String>();
+        for (int i=0; i<n; i++){
+            if ( i == posAnswer ){
+                // input correct answer as option
+                options.add(answer);
+            }
+            else {
+                // find a random option different from correct answer
+                while ( true ){
+                    String candidate = allOptions[ random.nextInt( allOptions.length ) ];
+                    if ( candidate.equals(answer))
+                        continue;
+                    if ( options.contains(candidate) )
+                        continue;
+
+                    // new option found
+                    options.add(candidate);
+                    break;
+                }
+            }
+        }
+
+        return joinArray( options );
+    }
+
+
+    private String joinArray(ArrayList<String> list){
 		StringBuilder sb = new StringBuilder();
 		for (int i=0; i<list.size(); i++){
 			sb.append(list.get(i));
@@ -229,13 +292,17 @@ public class ChallengeFinder {
 	
 		String abc;
     	if ( longOptions == null || longOptions.length() == 0 ){
-    		abc = new String("ABCDEFGHIJKLMNOPRSTUVYÆØÅ");
+    		abc = "ABCDEFGHIJKLMNOPRSTUVYÆØÅ";
     	}
     	else abc = longOptions;
-    	
+
+        int nOptions = n;
+        if (nOptions > abc.length())
+            nOptions = abc.length();
+
         String options = "";
-        int pos = random.nextInt(n);
-        for ( int i=0; i<n; i++ ){
+        int pos = random.nextInt(nOptions);
+        for ( int i=0; i<nOptions; i++ ){
         	if ( i == pos ){
         		// input correct answer as option
         		options += answer;

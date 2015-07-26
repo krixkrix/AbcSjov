@@ -22,9 +22,11 @@
         <item>Level 8</item>
         <item>Level 9</item>
         <item>Level 10</item>
-        <item>Level 11</item>
         <item>Level 12</item>
-        
+        <item>Level 14</item>
+        <item>Level 16</item>
+        <item>Level 18</item>
+
         </string-array>
     <string-array name="levellist">
         <item>1</item>
@@ -37,8 +39,10 @@
         <item>8</item>
         <item>9</item>
         <item>10</item>
-        <item>11</item>
         <item>12</item>
+        <item>14</item>
+        <item>16</item>
+        <item>18</item>
     </string-array>
 
     <string name="challengedelay">Pause mellem opgaver</string>

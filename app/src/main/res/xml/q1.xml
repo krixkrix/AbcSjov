@@ -189,6 +189,7 @@
         <question id="@drawable/stjerner" answer="ST" />
     </level>
     <level l="14" options="6">
+        <question id="@drawable/castle" answer="SL" />
         <question id="@drawable/skib" answer="SK" />
         <question id="@drawable/skildpadde" answer="SK" />
         <question id="@drawable/sko" answer="SK" />
@@ -213,11 +214,53 @@
         <question id="@drawable/gaffel" answer="GA" />
         <question id="@drawable/majs" answer="MA" />
         <question id="@drawable/kniv" answer="KN" />
-        <question id="@drawable/graeshoppe" answer="GR" options="GJ,KR,KJ,GÆ,GR,KÆ" />
+        <question id="@drawable/graeshoppe" answer="GR"/>
         <question id="@drawable/snowman" answer="SN"  />
     </level>
 
     <level l="16" options="8">
+        <question id="@drawable/blomster" answer="BL" />
+        <question id="@drawable/briller" answer="BR" />
+        <question id="@drawable/bridge" answer="BR" />
+        <question id="@drawable/flag" answer="FL" />
+        <question id="@drawable/fly" answer="FL" />
+        <question id="@drawable/froe" answer="FR" />
+        <question id="@drawable/glas" answer="GL" />
+        <question id="@drawable/grass" answer="GR" />
+        <question id="@drawable/crocodile" answer="KR" />
+        <question id="@drawable/stjerner" answer="ST" />
+    </level>
+
+    <level l="17" options="8">
+        <question id="@drawable/skib" answer="SK" />
+        <question id="@drawable/skildpadde" answer="SK" />
+        <question id="@drawable/sko" answer="SK" />
+        <question id="@drawable/sky" answer="SK" />
+        <question id="@drawable/slange" answer="SL" />
+        <question id="@drawable/slikkepind" answer="SL" />
+        <question id="@drawable/stige" answer="ST" />
+        <question id="@drawable/castle" answer="SL" />
+        <question id="@drawable/svane" answer="SV" />
+        <question id="@drawable/trae" answer="TR" />
+        <question id="@drawable/briller" answer="BR" />
+        <question id="@drawable/ske" answer="SK" />
+    </level>
+
+    <level l="18" options="8">
+        <question id="@drawable/trae" answer="TR" />
+        <question id="@drawable/briller" answer="BR" />
+        <question id="@drawable/ske" answer="SK" />
+        <question id="@drawable/snowman" answer="SN"  />
+        <!-- second letter is a bit harder... -->
+        <question id="@drawable/bjoern" answer="BJ" />
+        <question id="@drawable/majs" answer="MA" options="MA,MÅ,MS,MJ,MO,MØ" />
+        <question id="@drawable/gaffel" answer="GA" options="GA,KA,GÅ,KÅ,GF,KF" />
+        <question id="@drawable/kniv" answer="KN" options="KJ,KN,KV,GJ,GN,GV"/>
+        <question id="@drawable/graeshoppe" answer="GR" options="GJ,KR,KJ,GÆ,GR,KÆ" />
+        <question id="@drawable/svane" answer="SV" options="SV,SN,SG,ST,SW,SL,SK" />
+    </level>
+
+    <level l="19" options="8">
         <question id="@drawable/blomster" answer="BL" />
         <question id="@drawable/briller" answer="BR" />
         <question id="@drawable/bridge" answer="BR" />
@@ -236,18 +279,17 @@
         <question id="@drawable/slikkepind" answer="SL" />
         <question id="@drawable/stige" answer="ST" />
         <question id="@drawable/castle" answer="SL" />
-        <question id="@drawable/svane" answer="SV" />
         <question id="@drawable/trae" answer="TR" />
-        <question id="@drawable/briller" answer="BR" />
         <question id="@drawable/ske" answer="SK" />
-
-        <!-- second letter is a bit harder... -->
-        <question id="@drawable/bjoern" answer="BJ" />
-        <question id="@drawable/gaffel" answer="GA" />
-        <question id="@drawable/majs" answer="MA" />
-        <question id="@drawable/kniv" answer="KN" />
-        <question id="@drawable/graeshoppe" answer="GR" options="GJ,KR,KJ,GÆ,GR,KÆ" />
+        <question id="@drawable/trae" answer="TR" />
+        <question id="@drawable/ske" answer="SK" />
         <question id="@drawable/snowman" answer="SN"  />
+        <question id="@drawable/bjoern" answer="BJ" />
+        <question id="@drawable/majs" answer="MA" options="MA,MÅ,MS,MJ,MO,MØ" />
+        <question id="@drawable/gaffel" answer="GA" options="GA,KA,GÅ,KÅ,GF,KF" />
+        <question id="@drawable/kniv" answer="KN" options="KJ,KN,KV,GJ,GN,GV"/>
+        <question id="@drawable/graeshoppe" answer="GR" options="GJ,KR,KJ,GÆ,GR,KÆ" />
+        <question id="@drawable/svane" answer="SV" options="SV,SN,SG,ST,SW,SL,SK" />
     </level>
 
 
